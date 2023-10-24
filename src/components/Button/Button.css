@@ -1,0 +1,25 @@
+.button {
+  padding: 20px 30px;
+  background-color: #d4a373;
+  border-radius: 8px;
+  font-weight: bold;
+  min-width: 140px;
+}
+
+.button:hover {
+  background-color: #d5bdaf;
+}
+
+.button--accent {
+  background-color: #606c38;
+  color: #fff;
+}
+
+.button--selected {
+  background-color: #bc6c25;
+}
+
+.button--accent:hover {
+  background-color: #a3b18a;
+  color: #000;
+}

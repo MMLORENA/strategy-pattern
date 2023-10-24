@@ -1,19 +1,28 @@
-import BrushTool from "../../BrushTool/BrushTool";
-import EraserTool from "../EraserTool/EraserTool";
-import PenTool from "../PenTool/PenTool";
+import { DrawingTool } from "../../draw/types";
+import "./ToolSelector.css";
+import Button from "../Button/Button";
 
 interface ToolSelectorProps {
-  onSelectTool: (tool: React.ReactElement) => void;
+  onSelectTool: (tool: DrawingTool) => void;
+  tools: DrawingTool[];
+  selectedTool: DrawingTool;
 }
 
 const ToolSelector = ({
   onSelectTool,
+  tools,
+  selectedTool,
 }: ToolSelectorProps): React.ReactElement => {
   return (
-    <div>
-      <button onClick={() => onSelectTool(<PenTool />)}>Lápiz</button>
-      <button onClick={() => onSelectTool(<BrushTool />)}>Pincel</button>
-      <button onClick={() => onSelectTool(<EraserTool />)}>Borrador</button>
+    <div className="container-tools">
+      {tools.map((tool) => (
+        <Button
+          key={tool.name}
+          actionOnClick={() => onSelectTool(tool)}
+          text={tool.name}
+          className={selectedTool.name === tool.name ? "selected" : ""}
+        />
+      ))}
     </div>
   );
 };
